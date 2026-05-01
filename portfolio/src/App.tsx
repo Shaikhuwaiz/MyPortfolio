@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
+import Showcase from './showcase'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -28,6 +29,12 @@ function App() {
         >
           Count is {count}
         </button>
+      </section>
+
+      <div className="ticks"></div>
+
+      <section style={{ padding: '40px 32px' }}>
+        <Showcase />
       </section>
 
       <div className="ticks"></div>
