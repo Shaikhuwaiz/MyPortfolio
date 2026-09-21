@@ -178,16 +178,8 @@ function App() {
       }
 
       const scrollDelta = p - previousP
-      let navSign = 1
-      if (navActive) {
-        const nTarget = navigationTargetRef.current
-        if (nTarget) {
-          const nDest = dests.find((d) => d.key === nTarget)
-          if (nDest) navSign = nDest.centerP >= p ? 1 : -1
-        }
-      }
       const rawVelocity = navActive
-        ? navSign * 0.12
+        ? 0
         : Math.max(-1, Math.min(1, (scrollDelta / Math.max(dt, 0.001)) * 0.5))
       previousP = p
 
@@ -228,7 +220,6 @@ function App() {
         navigationLockRef.current = false
         navigationTargetRef.current = null
         galaxyRef.current?.setRepulsionSuppressed(false)
-        galaxyRef.current?.setFastTrack(false)
       }
 
       for (const s of stations) {
@@ -408,7 +399,6 @@ function App() {
     navigationTargetRef.current = key
     navigationLockUntilRef.current = performance.now() + 500
     galaxyRef.current?.setRepulsionSuppressed(false)
-    galaxyRef.current?.setFastTrack(true)
     goToRef.current(key)
   }, [])
 
